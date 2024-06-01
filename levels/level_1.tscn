@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://lngx1gma72pp"]
+
+[ext_resource type="PackedScene" uid="uid://djkojnfohxlnd" path="res://levels/level.tscn" id="1_tqu3w"]
+[ext_resource type="PackedScene" uid="uid://cbkr4dys0xhb8" path="res://tiles/tower_pad.tscn" id="2_6hcj0"]
+[ext_resource type="Script" path="res://levels/level_1.gd" id="2_hth6t"]
+
+[sub_resource type="Curve2D" id="Curve2D_fnlxn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1756, 1141, 0, 0, 0, 0, 1751, 452, 0, 0, 0, 0, 1188, 446, 0, 0, 0, 0, 1177, 919, 0, 0, 0, 0, 290, 925, 0, 0, 0, 0, 289, 576, 0, 0, 0, 0, 821, 564, 0, 0, 0, 0, 830, 288, 0, 0, 0, 0, 31, 275)
+}
+point_count = 9
+
+[node name="Level1" instance=ExtResource("1_tqu3w")]
+script = ExtResource("2_hth6t")
+
+[node name="SpawnTimer" parent="." index="1"]
+wait_time = 0.168
+
+[node name="SacredTree2" parent="." index="3"]
+metadata/_edit_lock_ = true
+
+[node name="BasePad3" parent="TowerPads" index="0" instance=ExtResource("2_6hcj0")]
+position = Vector2(613, 483)
+_element = 2
+
+[node name="BasePad2" parent="TowerPads" index="1" instance=ExtResource("2_6hcj0")]
+position = Vector2(1662, 1004)
+_element = 2
+
+[node name="BasePad" parent="TowerPads" index="2" instance=ExtResource("2_6hcj0")]
+position = Vector2(1661, 537)
+_element = 2
+
+[node name="BasePad4" parent="TowerPads" index="3" instance=ExtResource("2_6hcj0")]
+position = Vector2(746, 845)
+_element = 2
+
+[node name="BasePad5" parent="TowerPads" index="4" instance=ExtResource("2_6hcj0")]
+position = Vector2(1098, 648)
+
+[node name="Path2D" type="Path2D" parent="." index="5"]
+curve = SubResource("Curve2D_fnlxn")

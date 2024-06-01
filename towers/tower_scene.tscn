@@ -1,0 +1,171 @@
+[gd_scene load_steps=14 format=3 uid="uid://msqva13l5r7s"]
+
+[ext_resource type="Script" path="res://towers/tower_scene.gd" id="1_wuhkl"]
+[ext_resource type="Material" uid="uid://dxj6kwcuiwko6" path="res://shaders/pixel_smooth.tres" id="2_cptiw"]
+[ext_resource type="Texture2D" uid="uid://bxjte1qtajipj" path="res://assets/towers/TowerWater.png" id="3_2lwqi"]
+[ext_resource type="Texture2D" uid="uid://ctmf5ac881yvl" path="res://assets/towers/AuraNeutral.png" id="4_4y7wu"]
+[ext_resource type="Texture2D" uid="uid://dilvcol028oq4" path="res://assets/towers/TowerShadow.png" id="4_xf4ia"]
+[ext_resource type="Script" path="res://towers/RangeIndicator.gd" id="6_0fqii"]
+[ext_resource type="PackedScene" uid="uid://bx2h68rc5e2yf" path="res://ui/TowerActionsButton.tscn" id="7_cua8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1p6d"]
+size = Vector2(39, 71)
+
+[sub_resource type="Animation" id="Animation_kc6qp"]
+resource_name = "float"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TowerSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -30), Vector2(0, -50), Vector2(0, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tc7r6"]
+_data = {
+"float": SubResource("Animation_kc6qp")
+}
+
+[sub_resource type="Animation" id="Animation_ike5c"]
+resource_name = "aura"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TowerSprite/Aura:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_33wsg"]
+_data = {
+"aura": SubResource("Animation_ike5c")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_un51o"]
+radius = 150.0
+
+[node name="Tower" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+script = ExtResource("1_wuhkl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, -30.5)
+shape = SubResource("RectangleShape2D_y1p6d")
+
+[node name="TowerSprite" type="Sprite2D" parent="."]
+z_index = 3
+material = ExtResource("2_cptiw")
+position = Vector2(0, -30)
+scale = Vector2(3, 3)
+texture = ExtResource("3_2lwqi")
+metadata/_edit_lock_ = true
+
+[node name="Marker2D" type="Marker2D" parent="TowerSprite"]
+visible = false
+
+[node name="Aura" type="Sprite2D" parent="TowerSprite"]
+material = ExtResource("2_cptiw")
+texture = ExtResource("4_4y7wu")
+hframes = 7
+
+[node name="TowerActions" type="HBoxContainer" parent="TowerSprite"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.3333
+offset_top = -33.6667
+offset_right = 144.667
+offset_bottom = 30.3333
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+
+[node name="RecycleButton" parent="TowerSprite/TowerActions" instance=ExtResource("7_cua8t")]
+layout_mode = 2
+
+[node name="ChangeAttackButton" parent="TowerSprite/TowerActions" instance=ExtResource("7_cua8t")]
+visible = false
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+tooltip_text = "Trocar Ataque"
+texture = ExtResource("3_2lwqi")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+material = ExtResource("2_cptiw")
+texture = ExtResource("4_xf4ia")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tc7r6")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_33wsg")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_un51o")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="RangeIndicator" type="Node2D" parent="."]
+visible = false
+script = ExtResource("6_0fqii")
+
+[node name="ProjectileLines" type="Node2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="ProjectileLines"]
+
+[node name="Line2D2" type="Line2D" parent="ProjectileLines"]
+
+[node name="Line2D3" type="Line2D" parent="ProjectileLines"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.344
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="clicked" from="TowerSprite/TowerActions/RecycleButton" to="." method="_on_recycle_button_clicked"]
+[connection signal="clicked" from="TowerSprite/TowerActions/ChangeAttackButton" to="." method="_on_change_attack_button_clicked"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_do_damage"]

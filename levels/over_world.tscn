@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://nhkwy0w7v6b7"]
+
+[ext_resource type="Script" path="res://levels/over_world.gd" id="1_x7gkq"]
+
+[node name="OverWorld" type="Node2D"]
+script = ExtResource("1_x7gkq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Level1" type="Button" parent="CanvasLayer"]
+offset_left = 130.0
+offset_top = 859.0
+offset_right = 237.0
+offset_bottom = 909.0
+theme_override_font_sizes/font_size = 30
+text = "Level 1"
+
+[node name="Level2" type="Button" parent="CanvasLayer"]
+offset_left = 458.0
+offset_top = 689.0
+offset_right = 565.0
+offset_bottom = 739.0
+theme_override_font_sizes/font_size = 30
+text = "Level 2
+"
+
+[node name="Level3" type="Button" parent="CanvasLayer"]
+offset_left = 740.0
+offset_top = 571.0
+offset_right = 847.0
+offset_bottom = 621.0
+theme_override_font_sizes/font_size = 30
+text = "Level 3
+"
+
+[node name="Level4" type="Button" parent="CanvasLayer"]
+offset_left = 1122.0
+offset_top = 465.0
+offset_right = 1229.0
+offset_bottom = 515.0
+theme_override_font_sizes/font_size = 30
+text = "Level 4
+"
+
+[node name="Level5" type="Button" parent="CanvasLayer"]
+offset_left = 1432.0
+offset_top = 278.0
+offset_right = 1539.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 30
+text = "Level 5
+"
+
+[connection signal="pressed" from="CanvasLayer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/Level5" to="." method="_on_level_5_pressed"]

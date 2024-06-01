@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bniobx0qdfp63"]
+
+[ext_resource type="Script" path="res://enemies/skeleton/skeleton.gd" id="1_ldiw3"]
+[ext_resource type="PackedScene" uid="uid://0k0ly3ct38se" path="res://enemies/enemy.tscn" id="1_tcfl2"]
+[ext_resource type="Texture2D" uid="uid://c7cqtxmgor3yc" path="res://assets/enemies/NeutralSkeleton.png" id="3_qp7cq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1inbo"]
+size = Vector2(7.73932, 23.3284)
+
+[node name="Skeleton" instance=ExtResource("1_tcfl2")]
+script = ExtResource("1_ldiw3")
+
+[node name="Sprite2D" parent="." index="0"]
+z_index = 2
+texture = ExtResource("3_qp7cq")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-1, -5.96046e-08)
+rotation = -3.14159
+scale = Vector2(3.35947, -1.45745)
+shape = SubResource("RectangleShape2D_1inbo")

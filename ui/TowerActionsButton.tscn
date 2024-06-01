@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx2h68rc5e2yf"]
+
+[ext_resource type="Material" uid="uid://dxj6kwcuiwko6" path="res://shaders/pixel_smooth.tres" id="1_ejedt"]
+[ext_resource type="Texture2D" uid="uid://dq8735od7hjdr" path="res://assets/ui/Trashbin.png" id="2_cfxpa"]
+[ext_resource type="Script" path="res://ui/tower_actions_button.gd" id="2_upcsb"]
+
+[node name="RecycleButton" type="TextureRect"]
+material = ExtResource("1_ejedt")
+tooltip_text = "Deletar"
+texture = ExtResource("2_cfxpa")
+script = ExtResource("2_upcsb")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+self_modulate = Color(0, 0, 0, 0.333333)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

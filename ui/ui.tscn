@@ -1,0 +1,134 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpvwti7k4ww1f"]
+
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_x2woy"]
+[ext_resource type="Texture2D" uid="uid://u1b1k6eohmym" path="res://assets/ui/Play.png" id="2_54mfd"]
+[ext_resource type="Material" uid="uid://dxj6kwcuiwko6" path="res://shaders/pixel_smooth.tres" id="2_ys334"]
+[ext_resource type="Texture2D" uid="uid://cnckpxksm4gux" path="res://assets/ui/enemy.png" id="3_txiio"]
+[ext_resource type="Texture2D" uid="uid://ia76xfoav32s" path="res://assets/ui/Exit.png" id="5_kkprg"]
+[ext_resource type="PackedScene" uid="uid://cg0c33sootcnf" path="res://ui/inheritance_panel.tscn" id="6_jrx87"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qce6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne4ob"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_x2woy")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="."]
+offset_left = 30.0
+offset_top = 18.0
+offset_right = 319.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5qce6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ne4ob")
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TowersContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+
+[node name="WaveContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="WaveButton" type="Button" parent="PanelContainer/WaveContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 4
+icon = ExtResource("2_54mfd")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Enemies_Counter" type="HBoxContainer" parent="PanelContainer/WaveContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/WaveContainer/Enemies_Counter"]
+material = ExtResource("2_ys334")
+layout_mode = 2
+texture = ExtResource("3_txiio")
+stretch_mode = 3
+
+[node name="Label_Current" type="Label" parent="PanelContainer/WaveContainer/Enemies_Counter"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="Label" type="Label" parent="PanelContainer/WaveContainer/Enemies_Counter"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "/"
+
+[node name="Label_Total" type="Label" parent="PanelContainer/WaveContainer/Enemies_Counter"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="ExitButton" type="Button" parent="PanelContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+icon = ExtResource("5_kkprg")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TowerMenu" type="VBoxContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -21.5
+offset_bottom = 21.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="InstantiateButton" type="Button" parent="TowerMenu"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 25
+text = "Instanciar"
+
+[node name="InheritanceButton" type="Button" parent="TowerMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Herança"
+
+[node name="InheritancePanel" parent="." instance=ExtResource("6_jrx87")]
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -661.0
+offset_top = -405.5
+offset_right = 0.0
+offset_bottom = 405.5
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.9, 1)
+
+[connection signal="pressed" from="PanelContainer/WaveContainer/WaveButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="TowerMenu/InstantiateButton" to="." method="_on_instantiate_button_pressed"]
+[connection signal="pressed" from="TowerMenu/InheritanceButton" to="." method="_on_inheritance_button_pressed"]

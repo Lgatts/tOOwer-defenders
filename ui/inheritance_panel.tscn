@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=3 uid="uid://cg0c33sootcnf"]
+
+[ext_resource type="Script" path="res://ui/inheritance_panel.gd" id="1_4ixt3"]
+[ext_resource type="Texture2D" uid="uid://bw6exr53r757k" path="res://assets/ui/TowerEarthBIG.png" id="2_jnouo"]
+[ext_resource type="Material" uid="uid://dxj6kwcuiwko6" path="res://shaders/pixel_smooth.tres" id="2_s872s"]
+[ext_resource type="Texture2D" uid="uid://gw8rc8ghprt1" path="res://assets/towers/TowerNeutral.png" id="4_8ociq"]
+
+[sub_resource type="SystemFont" id="SystemFont_wctce"]
+
+[node name="InheritancePanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 661.0
+offset_bottom = 811.0
+scale = Vector2(0.359998, 0.4)
+script = ExtResource("1_4ixt3")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.560784)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.054
+offset_top = 22.5
+offset_right = 108.946
+offset_bottom = 50.5
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 25
+text = "Selecione a classe mãe"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.499
+offset_top = 97.5
+offset_right = 182.501
+offset_bottom = 212.5
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("SystemFont_wctce")
+theme_override_font_sizes/font_size = 50
+item_count = 1
+selected = 0
+popup/item_0/text = "Remover"
+popup/item_0/icon = ExtResource("2_jnouo")
+popup/item_0/id = 0
+popup/item_0/separator = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.6095
+offset_top = -456.0
+offset_right = -9.6095
+offset_bottom = -424.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3, 3)
+color = Color(0, 0, 0, 0.188235)
+
+[node name="SubClass" type="TextureRect" parent="ColorRect2"]
+unique_name_in_owner = true
+material = ExtResource("2_s872s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_8ociq")
+metadata/_edit_lock_ = true
+
+[node name="MakeInheritanceButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 191.668
+offset_top = 555.0
+offset_right = 477.668
+offset_bottom = 605.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Herdar"
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 219.446
+offset_top = 485.0
+offset_right = 446.446
+offset_bottom = 516.0
+tooltip_text = "Usa o elemento original da torre filha, pois sobrescreve o da torre mãe"
+theme_override_font_sizes/font_size = 16
+button_pressed = true
+text = "Sobrescrever Elemento"
+
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="MakeInheritanceButton" to="." method="_on_make_inheritance_button_pressed"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
