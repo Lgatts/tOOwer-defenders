@@ -9,8 +9,7 @@ func _ready():
 		#Wave.new(4, skeleton, Enums.Elements.NEUTRAL),
 		#Wave.new(4, bat, Enums.Elements.NEUTRAL)
 	]
-	self._waves_controller = WavesController.new(waves)	
-	print(Globals.player.name)
+	self._waves_controller = WavesController.new(waves)
 
 func _on_complete_level():
 	if(Globals.player.inventory.size() == 1):
