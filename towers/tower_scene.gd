@@ -148,12 +148,14 @@ func place():
 	if(current_tower_pad._element == _parent):
 		_override_attack = true
 		change_attack_button.visible = false
+	else:
+		change_attack_button.visible = true
+		
 	if(_parent == Enums.Elements.UNDEFINED):
 		change_attack_button.visible = false
 	else:
 		change_attack_button.texture = _parent_icon
 		change_attack_button.tooltip_text = "Usar ataque torre mãe"
-		change_attack_button.visible = true
 
 func _on_mouse_entered():
 	if(placed and Globals.ui_state == Enums.States.DEFAULT):

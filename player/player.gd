@@ -5,6 +5,9 @@ signal player_gold_change
 
 var inventory: Array[Tower]
 var max_health: int
+var name: String
+var texture: Texture2D
+var textureId: int
 
 var current_health: int:
 	set(value):

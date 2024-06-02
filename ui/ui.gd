@@ -4,8 +4,9 @@ signal wave_button_clicked
 
 var tower_slot_scene: PackedScene = preload("res://ui/tower_slot.tscn")
 
-@onready
-var player_health_bar: ProgressBar = $PlayerHealthBar
+
+@onready var player_health_bar: ProgressBar = $PlayerHealthBar
+@onready var player_texture = $PlayerTexture
 
 var selectedTower: Tower
 
@@ -14,6 +15,7 @@ var current_tower_instance
 var towers: Array[Tower]
 
 func _ready():
+	loadPlayer()
 	createTowerSlots()
 	$TowerMenu.visible = false
 	Globals.connect("enemies_change", update_enemies_counter)
@@ -23,6 +25,11 @@ func _ready():
 	update_enemies_counter()
 	update_player_health_bar()
 	connect_all_tower_slots()
+
+func loadPlayer():
+	player_texture.texture = Globals.player.texture
+	if(Globals.player.textureId == 1):
+		player_texture.flip_h = true
 
 func createTowerSlots():
 	for tower in Globals.player.inventory:
@@ -66,10 +73,9 @@ func _on_instantiate_button_pressed():
 	current_tower_instance = selectedTower.instantiate()
 	current_tower_instance.global_position = get_viewport().get_mouse_position()
 	get_parent().get_node("Towers").add_child(current_tower_instance)
-	#get_parent().get_node("Towers").get_child(0).connect("tower_clicked", _on_tower_clicked)
 	Globals.ui_state = Enums.States.INSTANTIATING
 
-func _on_inheritance_button_pressed():	
+func _on_inheritance_button_pressed():
 	$InheritancePanel.global_position.x = $TowerMenu/InheritanceButton.global_position.x - 500
 	$InheritancePanel.create(selectedTower)
 	$TowerMenu.visible = false

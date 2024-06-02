@@ -1,7 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckhwq6t8ybben"]
+[gd_scene load_steps=6 format=3 uid="uid://ckhwq6t8ybben"]
 
 [ext_resource type="Texture2D" uid="uid://d0ksnpb5c0kin" path="res://assets/ui/TitleScreenBackground.png" id="1_jc5l1"]
 [ext_resource type="Script" path="res://game.gd" id="1_o58xa"]
+[ext_resource type="FontFile" uid="uid://c5skvctsq0yh5" path="res://assets/fonts/LondonPresley.ttf" id="3_k08m4"]
+
+[sub_resource type="Animation" id="Animation_hj7eu"]
+resource_name = "title"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.965936, 1),
+"update": 0,
+"values": [Vector2(122, 80), Vector2(122, 150)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1r7ve"]
+_data = {
+"title": SubResource("Animation_hj7eu")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_o58xa")
@@ -22,16 +45,47 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -559.0
+offset_top = -29.0
+offset_right = -145.0
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 19
 
-[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="NewGameButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Iniciar"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("3_k08m4")
+theme_override_font_sizes/font_size = 59
+text = "Novo Jogo"
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="ContinueButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("3_k08m4")
+theme_override_font_sizes/font_size = 59
+text = "Continuar"
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 122.0
+offset_top = 80.0
+offset_right = 1054.0
+offset_bottom = 361.997
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/normal_font = ExtResource("3_k08m4")
+theme_override_font_sizes/normal_font_size = 121
+text = "tOOwer 
+    Defenders"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_1r7ve")
+}
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ContinueButton" to="." method="_on_button_pressed"]

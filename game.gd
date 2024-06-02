@@ -1,4 +1,9 @@
 extends Node2D
 
-func _on_button_pressed():
-	TransitionScene.change_scene("res://levels/level_1.tscn")
+@onready var animation_player = $CanvasLayer/AnimationPlayer
+
+func _ready():
+	animation_player.play("title")
+
+func _on_new_game_button_pressed():
+	TransitionScene.change_scene("res://screens/create_char.tscn")

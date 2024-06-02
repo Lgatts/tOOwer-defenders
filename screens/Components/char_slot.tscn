@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://1luh5g2frrks"]
+
+[ext_resource type="Texture2D" uid="uid://cqx0gae2kolr8" path="res://assets/player/char1.png" id="1_c5v3g"]
+[ext_resource type="Script" path="res://screens/Components/char_select.gd" id="2_1nmum"]
+
+[node name="Char1" type="TextureRect"]
+modulate = Color(0.203922, 0.203922, 0.203922, 1)
+texture = ExtResource("1_c5v3g")
+script = ExtResource("2_1nmum")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

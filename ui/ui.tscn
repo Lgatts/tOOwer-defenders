@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpvwti7k4ww1f"]
+[gd_scene load_steps=10 format=3 uid="uid://bpvwti7k4ww1f"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_x2woy"]
 [ext_resource type="Texture2D" uid="uid://u1b1k6eohmym" path="res://assets/ui/Play.png" id="2_54mfd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cnckpxksm4gux" path="res://assets/ui/enemy.png" id="3_txiio"]
 [ext_resource type="Texture2D" uid="uid://ia76xfoav32s" path="res://assets/ui/Exit.png" id="5_kkprg"]
 [ext_resource type="PackedScene" uid="uid://cg0c33sootcnf" path="res://ui/inheritance_panel.tscn" id="6_jrx87"]
+[ext_resource type="Texture2D" uid="uid://cqx0gae2kolr8" path="res://assets/player/char1.png" id="7_4mp27"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qce6"]
 
@@ -16,10 +17,10 @@ bg_color = Color(1, 0, 0, 1)
 script = ExtResource("1_x2woy")
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="."]
-offset_left = 30.0
-offset_top = 18.0
-offset_right = 319.0
-offset_bottom = 45.0
+offset_left = 158.0
+offset_top = 41.0
+offset_right = 447.0
+offset_bottom = 68.0
 theme_override_styles/background = SubResource("StyleBoxFlat_5qce6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ne4ob")
 max_value = 5.0
@@ -127,6 +128,14 @@ offset_bottom = 405.5
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.9, 1)
+
+[node name="PlayerTexture" type="TextureRect" parent="."]
+offset_left = 29.0
+offset_top = 30.0
+offset_right = 541.0
+offset_bottom = 798.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_4mp27")
 
 [connection signal="pressed" from="PanelContainer/WaveContainer/WaveButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/ExitButton" to="." method="_on_exit_button_pressed"]
