@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://1luh5g2frrks"]
 
-[ext_resource type="Texture2D" uid="uid://cqx0gae2kolr8" path="res://assets/player/char1.png" id="1_c5v3g"]
 [ext_resource type="Script" path="res://screens/Components/char_select.gd" id="2_1nmum"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t7w45"]
+load_path = "res://.godot/imported/char1.png-8135f8905da776dd0825a14fe7f2cbd7.ctex"
 
 [node name="Char1" type="TextureRect"]
 modulate = Color(0.203922, 0.203922, 0.203922, 1)
-texture = ExtResource("1_c5v3g")
+texture = SubResource("CompressedTexture2D_t7w45")
 script = ExtResource("2_1nmum")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

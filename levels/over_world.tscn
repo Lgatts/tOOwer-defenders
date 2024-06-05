@@ -1,58 +1,90 @@
-[gd_scene load_steps=2 format=3 uid="uid://nhkwy0w7v6b7"]
+[gd_scene load_steps=9 format=3 uid="uid://nhkwy0w7v6b7"]
 
 [ext_resource type="Script" path="res://levels/over_world.gd" id="1_x7gkq"]
+[ext_resource type="Texture2D" uid="uid://dotjiibxp2vxo" path="res://assets/levels/Level1.png" id="2_hs6x0"]
+[ext_resource type="Texture2D" uid="uid://bpred22m712sl" path="res://assets/levels/Level2.png" id="3_7e10h"]
+[ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="3_ktifu"]
+[ext_resource type="Texture2D" uid="uid://dnewc6771gltd" path="res://assets/levels/MapBackground.png" id="4_hlo3l"]
+[ext_resource type="PackedScene" uid="uid://cog41vn4ycjl5" path="res://levels/level_slot.tscn" id="4_lbh46"]
+[ext_resource type="PackedScene" uid="uid://lngx1gma72pp" path="res://levels/level_1.tscn" id="6_2mdvk"]
+[ext_resource type="PackedScene" uid="uid://cx88hvw557wch" path="res://levels/level_2.tscn" id="8_gacg1"]
 
 [node name="OverWorld" type="Node2D"]
 script = ExtResource("1_x7gkq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Level1" type="Button" parent="CanvasLayer"]
-offset_left = 130.0
-offset_top = 859.0
-offset_right = 237.0
-offset_bottom = 909.0
-theme_override_font_sizes/font_size = 30
-text = "Level 1"
+[node name="MapBackground" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hlo3l")
 
-[node name="Level2" type="Button" parent="CanvasLayer"]
-offset_left = 458.0
-offset_top = 689.0
-offset_right = 565.0
-offset_bottom = 739.0
-theme_override_font_sizes/font_size = 30
-text = "Level 2
-"
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -229.0
+offset_top = 34.0
+offset_right = 222.0
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_ktifu")
+theme_override_font_sizes/font_size = 100
+text = "Escolha a fase"
 
-[node name="Level3" type="Button" parent="CanvasLayer"]
-offset_left = 740.0
-offset_top = 571.0
-offset_right = 847.0
-offset_bottom = 621.0
-theme_override_font_sizes/font_size = 30
-text = "Level 3
-"
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -887.0
+offset_top = 174.0
+offset_right = 2669.0
+offset_bottom = 846.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+theme_override_constants/separation = 44
 
-[node name="Level4" type="Button" parent="CanvasLayer"]
-offset_left = 1122.0
-offset_top = 465.0
-offset_right = 1229.0
-offset_bottom = 515.0
-theme_override_font_sizes/font_size = 30
-text = "Level 4
-"
+[node name="Level1" parent="CanvasLayer/HBoxContainer" instance=ExtResource("4_lbh46")]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("2_hs6x0")
+level_path = ExtResource("6_2mdvk")
 
-[node name="Level5" type="Button" parent="CanvasLayer"]
-offset_left = 1432.0
-offset_top = 278.0
-offset_right = 1539.0
-offset_bottom = 328.0
-theme_override_font_sizes/font_size = 30
-text = "Level 5
-"
+[node name="Level2" parent="CanvasLayer/HBoxContainer" instance=ExtResource("4_lbh46")]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("3_7e10h")
+level_path = ExtResource("8_gacg1")
 
-[connection signal="pressed" from="CanvasLayer/Level1" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="CanvasLayer/Level2" to="." method="_on_level_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/Level3" to="." method="_on_level_3_pressed"]
-[connection signal="pressed" from="CanvasLayer/Level4" to="." method="_on_level_4_pressed"]
-[connection signal="pressed" from="CanvasLayer/Level5" to="." method="_on_level_5_pressed"]
+[node name="Level3" parent="CanvasLayer/HBoxContainer" instance=ExtResource("4_lbh46")]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("3_7e10h")
+level_path = ExtResource("6_2mdvk")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 355.0
+offset_top = 581.0
+offset_right = 2733.0
+offset_bottom = 1253.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+theme_override_constants/separation = 44
+
+[node name="Level4" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("4_lbh46")]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("2_hs6x0")
+level_path = ExtResource("6_2mdvk")
+
+[node name="Level5" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("4_lbh46")]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("2_hs6x0")
+level_path = ExtResource("6_2mdvk")

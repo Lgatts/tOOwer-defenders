@@ -22,6 +22,7 @@ var _parent_icon: Texture2D
 var _parent: Enums.Elements
 var _override_element: bool = true
 var _override_attack: bool = false
+var _cost: int
 
 var attack_colors = {
 	Enums.Elements.FIRE: Color.html("#ff8691"),
@@ -39,7 +40,8 @@ var attacks = {
 	Enums.Elements.NEUTRAL: boldAttack
 }
 
-func construct(element: Enums.Elements, texture:Texture2D, damage:int, parent:Enums.Elements, aura:Texture2D, override_element, parent_icon):
+func construct(element: Enums.Elements, texture:Texture2D, damage:int, parent:Enums.Elements, aura:Texture2D, 
+override_element: bool, parent_icon: Texture2D, cost: int):
 	_element = element
 	_texture = texture
 	_damage = damage
@@ -47,6 +49,7 @@ func construct(element: Enums.Elements, texture:Texture2D, damage:int, parent:En
 	_aura = aura
 	_override_element = override_element
 	_parent_icon = parent_icon
+	_cost = cost
 	
 func _ready():
 	_create_attack_lines()
@@ -139,6 +142,7 @@ func _do_damage():
 	_attack()
 
 func place():
+	Globals.player.gold -= _cost
 	self.placed = true
 	self.can_be_placed = false
 	self.current_tower_pad.has_turret = true

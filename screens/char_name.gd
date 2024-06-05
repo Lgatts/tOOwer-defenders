@@ -17,9 +17,11 @@ func _on_back_button_pressed():
 
 func _start_game():
 	if(line_edit.text == ""):
-		Globals.player.name = "Player"
+		Globals.player.name_text = "Player"
 	else:	
-		Globals.player.name = line_edit.text
+		Globals.player.name_text = line_edit.text
+	Repository.save_game()
+		
 	TransitionScene.change_scene("res://levels/level_1.tscn")
 	
 func _unhandled_key_input(event):

@@ -17,6 +17,7 @@ func _on_complete_level():
 
 func _ready():
 	Globals.player.reset_health()
+	Globals.player.reset_gold()
 
 func _process(_delta):
 	if(Globals.player.current_health == 0):

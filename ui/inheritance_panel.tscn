@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cg0c33sootcnf"]
+[gd_scene load_steps=7 format=3 uid="uid://cg0c33sootcnf"]
 
 [ext_resource type="Script" path="res://ui/inheritance_panel.gd" id="1_4ixt3"]
+[ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="2_6arbk"]
 [ext_resource type="Texture2D" uid="uid://bw6exr53r757k" path="res://assets/ui/TowerEarthBIG.png" id="2_jnouo"]
 [ext_resource type="Material" uid="uid://dxj6kwcuiwko6" path="res://shaders/pixel_smooth.tres" id="2_s872s"]
 [ext_resource type="Texture2D" uid="uid://gw8rc8ghprt1" path="res://assets/towers/TowerNeutral.png" id="4_8ociq"]
 
 [sub_resource type="SystemFont" id="SystemFont_wctce"]
+subpixel_positioning = 0
 
 [node name="InheritancePanel" type="Control"]
 layout_mode = 3
@@ -37,8 +39,10 @@ offset_right = 108.946
 offset_bottom = 50.5
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_6arbk")
+theme_override_font_sizes/font_size = 40
 text = "Selecione a classe mãe"
 
 [node name="OptionButton" type="OptionButton" parent="."]
@@ -109,6 +113,22 @@ theme_override_font_sizes/font_size = 16
 button_pressed = true
 text = "Sobrescrever Elemento"
 
+[node name="CloseButton" type="Button" parent="."]
+modulate = Color(0.952941, 0.196078, 0.360784, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 15.0
+offset_right = -17.0
+offset_bottom = 65.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_6arbk")
+theme_override_font_sizes/font_size = 42
+text = "x"
+
 [connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="MakeInheritanceButton" to="." method="_on_make_inheritance_button_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

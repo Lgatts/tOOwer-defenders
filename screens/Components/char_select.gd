@@ -2,7 +2,7 @@ extends TextureRect
 
 @onready var char_1 = $"."
 
-signal char_selected(id:int)
+signal char_selected
 
 @export var _id: int
 
@@ -20,10 +20,9 @@ func _on_mouse_exited():
 func _on_gui_input(event):
 	if(Globals._isLeftClickMouse(event)):
 		_selected = true
-		char_selected.emit(_id)
+		char_selected.emit()
 		Globals.player.texture = self.texture
 		Globals.player.textureId = _id
-		TransitionScene.change_scene("res://screens/char_name.tscn")
 
 func unselect():
 	_selected = false

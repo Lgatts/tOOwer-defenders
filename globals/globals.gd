@@ -12,7 +12,7 @@ var total_waves: int = 0:
 		total_waves = value
 		enemies_change.emit()
 		
-var player: Player = Player.new()
+var player: Player
 
 var ui_state: Enums.States = Enums.States.DEFAULT
 

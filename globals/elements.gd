@@ -13,3 +13,9 @@ enum States {
 	DEFAULT,
 	INSTANTIATING
 }
+
+enum LevelState {
+	DISABLED,
+	ENABLED,
+	CLEARED
+}

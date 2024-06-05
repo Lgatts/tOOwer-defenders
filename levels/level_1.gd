@@ -14,3 +14,7 @@ func _ready():
 func _on_complete_level():
 	if(Globals.player.inventory.size() == 1):
 		Globals.player.inventory.append(Tower.new(Enums.Elements.WATER))
+	Globals.player.cleared_levels["level_1"] = Enums.LevelState.CLEARED
+	Globals.player.cleared_levels["level_2"] = Enums.LevelState.ENABLED
+	Repository.save_game()
+	

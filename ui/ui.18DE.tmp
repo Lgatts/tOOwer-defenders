@@ -106,25 +106,7 @@ offset_bottom = 21.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TowerMenu"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="Label" type="Label" parent="TowerMenu/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_h8dae")
-theme_override_font_sizes/font_size = 34
-text = "-100"
-
-[node name="TextureRect" type="TextureRect" parent="TowerMenu/HBoxContainer"]
-material = ExtResource("2_ys334")
-layout_mode = 2
-texture = ExtResource("8_37a3v")
-
-[node name="InstantiateButton" type="Button" parent="TowerMenu/HBoxContainer"]
-unique_name_in_owner = true
+[node name="InstantiateButton" type="Button" parent="TowerMenu"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
@@ -132,7 +114,6 @@ theme_override_font_sizes/font_size = 25
 text = "Instanciar"
 
 [node name="InheritanceButton" type="Button" parent="TowerMenu"]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Herança"
@@ -193,5 +174,5 @@ text = "1000000"
 
 [connection signal="pressed" from="PanelContainer/WaveContainer/WaveButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="TowerMenu/HBoxContainer/InstantiateButton" to="." method="_on_instantiate_button_pressed"]
+[connection signal="pressed" from="TowerMenu/InstantiateButton" to="." method="_on_instantiate_button_pressed"]
 [connection signal="pressed" from="TowerMenu/InheritanceButton" to="." method="_on_inheritance_button_pressed"]

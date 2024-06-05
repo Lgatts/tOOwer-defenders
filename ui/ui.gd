@@ -4,9 +4,12 @@ signal wave_button_clicked
 
 var tower_slot_scene: PackedScene = preload("res://ui/tower_slot.tscn")
 
-
 @onready var player_health_bar: ProgressBar = $PlayerHealthBar
 @onready var player_texture = $PlayerTexture
+@onready var player_name = $PlayerName
+@onready var gold = $HBoxContainer/Gold
+@onready var tower_menu = $TowerMenu
+@onready var instantiate_button = %InstantiateButton
 
 var selectedTower: Tower
 
@@ -17,16 +20,18 @@ var towers: Array[Tower]
 func _ready():
 	loadPlayer()
 	createTowerSlots()
-	$TowerMenu.visible = false
+	tower_menu.visible = false
 	Globals.connect("enemies_change", update_enemies_counter)
 	Globals.player.connect("player_health_change", update_player_health_bar)
 	Globals.player.connect("player_gold_change", update_player_gold)
 	player_health_bar.max_value = Globals.player.max_health
 	update_enemies_counter()
 	update_player_health_bar()
+	update_player_gold()
 	connect_all_tower_slots()
 
 func loadPlayer():
+	player_name.text = Globals.player.name_text
 	player_texture.texture = Globals.player.texture
 	if(Globals.player.textureId == 1):
 		player_texture.flip_h = true
@@ -55,7 +60,7 @@ func update_player_health_bar():
 	player_health_bar.value = Globals.player.current_health
 	
 func update_player_gold():
-	pass
+	gold.text = str(Globals.player.gold)
 
 func connect_all_tower_slots():
 	for tower_slot_instance in $PanelContainer/TowersContainer.get_children():
@@ -63,13 +68,14 @@ func connect_all_tower_slots():
 
 func _on_tower_slot_select_tower(tower, slot_global_position):
 	_delete_currente_tower_instance()
-	selectedTower = tower
-	$TowerMenu.global_position = Vector2(slot_global_position.x - 150, slot_global_position.y)
-	$TowerMenu.visible = true
+	selectedTower = tower	
+	tower_menu.global_position = Vector2(slot_global_position.x - 300, slot_global_position.y)
+	tower_menu.visible = true
+	instantiate_button.disabled = (Globals.player.gold < selectedTower._cost)
 
 func _on_instantiate_button_pressed():
 	_delete_currente_tower_instance()
-	$TowerMenu.visible = false
+	tower_menu.visible = false
 	current_tower_instance = selectedTower.instantiate()
 	current_tower_instance.global_position = get_viewport().get_mouse_position()
 	get_parent().get_node("Towers").add_child(current_tower_instance)
@@ -78,7 +84,7 @@ func _on_instantiate_button_pressed():
 func _on_inheritance_button_pressed():
 	$InheritancePanel.global_position.x = $TowerMenu/InheritanceButton.global_position.x - 500
 	$InheritancePanel.create(selectedTower)
-	$TowerMenu.visible = false
+	tower_menu.visible = false
 	
 func _physics_process(_delta):
 	if(Globals.ui_state == Enums.States.INSTANTIATING):
@@ -92,6 +98,9 @@ func _unhandled_input(event):
 	if(Globals.ui_state == Enums.States.INSTANTIATING and _isRightClickMouse(event)):
 		_delete_currente_tower_instance()
 		Globals.ui_state = Enums.States.DEFAULT
+	if(tower_menu.visible and _isLeftClickMouse(event)):
+		tower_menu.visible = false
+		_delete_currente_tower_instance()
 			
 func _isLeftClickMouse(event):
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT

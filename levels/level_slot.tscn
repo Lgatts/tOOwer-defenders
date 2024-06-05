@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cog41vn4ycjl5"]
+
+[ext_resource type="Script" path="res://levels/level_slot.gd" id="1_wfftj"]
+[ext_resource type="Texture2D" uid="uid://dotjiibxp2vxo" path="res://assets/levels/Level1.png" id="1_ytcoi"]
+[ext_resource type="Texture2D" uid="uid://drmq44f34blam" path="res://assets/levels/padlock.png" id="2_leq8r"]
+[ext_resource type="Texture2D" uid="uid://drf7qhooijixa" path="res://assets/levels/Cleared.png" id="4_iurim"]
+
+[node name="LevelSlot" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wfftj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_ytcoi")
+
+[node name="Padlock" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_leq8r")
+
+[node name="Cleared" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_iurim")
+
+[connection signal="gui_input" from="TextureRect" to="." method="_on_texture_rect_gui_input"]
+[connection signal="mouse_entered" from="TextureRect" to="." method="_on_texture_rect_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect" to="." method="_on_texture_rect_mouse_exited"]

@@ -60,3 +60,6 @@ func _on_option_button_item_selected(index):
 		_override_element = false
 	else:
 		check_button.visible = true
+
+func _on_close_button_pressed():
+	self.visible = false

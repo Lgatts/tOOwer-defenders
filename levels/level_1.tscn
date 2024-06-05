@@ -19,16 +19,16 @@ wait_time = 0.168
 [node name="SacredTree2" parent="." index="3"]
 metadata/_edit_lock_ = true
 
-[node name="BasePad3" parent="TowerPads" index="0" instance=ExtResource("2_6hcj0")]
-position = Vector2(613, 483)
+[node name="BasePad" parent="TowerPads" index="0" instance=ExtResource("2_6hcj0")]
+position = Vector2(1661, 537)
 _element = 2
 
 [node name="BasePad2" parent="TowerPads" index="1" instance=ExtResource("2_6hcj0")]
 position = Vector2(1662, 1004)
 _element = 2
 
-[node name="BasePad" parent="TowerPads" index="2" instance=ExtResource("2_6hcj0")]
-position = Vector2(1661, 537)
+[node name="BasePad3" parent="TowerPads" index="2" instance=ExtResource("2_6hcj0")]
+position = Vector2(613, 483)
 _element = 2
 
 [node name="BasePad4" parent="TowerPads" index="3" instance=ExtResource("2_6hcj0")]
@@ -37,6 +37,55 @@ _element = 2
 
 [node name="BasePad5" parent="TowerPads" index="4" instance=ExtResource("2_6hcj0")]
 position = Vector2(1098, 648)
+_element = 2
+
+[node name="BasePad6" parent="TowerPads" index="5" instance=ExtResource("2_6hcj0")]
+position = Vector2(735, 483)
+_element = 2
+
+[node name="BasePad7" parent="TowerPads" index="6" instance=ExtResource("2_6hcj0")]
+position = Vector2(1662, 769)
+_element = 2
+
+[node name="BasePad8" parent="TowerPads" index="7" instance=ExtResource("2_6hcj0")]
+position = Vector2(1492, 362)
+_element = 2
+
+[node name="BasePad9" parent="TowerPads" index="8" instance=ExtResource("2_6hcj0")]
+position = Vector2(1475, 544)
+_element = 2
+
+[node name="BasePad10" parent="TowerPads" index="9" instance=ExtResource("2_6hcj0")]
+position = Vector2(1182, 357)
+_element = 2
+
+[node name="BasePad11" parent="TowerPads" index="10" instance=ExtResource("2_6hcj0")]
+position = Vector2(1269, 539)
+_element = 2
+
+[node name="BasePad12" parent="TowerPads" index="11" instance=ExtResource("2_6hcj0")]
+position = Vector2(1093, 833)
+_element = 2
+
+[node name="BasePad13" parent="TowerPads" index="12" instance=ExtResource("2_6hcj0")]
+position = Vector2(375, 836)
+_element = 2
+
+[node name="BasePad14" parent="TowerPads" index="13" instance=ExtResource("2_6hcj0")]
+position = Vector2(202, 566)
+_element = 2
+
+[node name="BasePad15" parent="TowerPads" index="14" instance=ExtResource("2_6hcj0")]
+position = Vector2(397, 369)
+_element = 2
+
+[node name="BasePad16" parent="TowerPads" index="15" instance=ExtResource("2_6hcj0")]
+position = Vector2(324, 196)
+_element = 2
 
 [node name="Path2D" type="Path2D" parent="." index="5"]
 curve = SubResource("Curve2D_fnlxn")
+metadata/_edit_lock_ = true
+
+[node name="Towers" parent="." index="6"]
+metadata/_edit_lock_ = true

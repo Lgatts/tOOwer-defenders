@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b686f86mka4x0"
-path="res://.godot/imported/char1.png-8135f8905da776dd0825a14fe7f2cbd7.ctex"
+uid="uid://drmq44f34blam"
+path="res://.godot/imported/padlock.png-ff12d45ac74a1677410e7d2cb75190e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/char1.png"
-dest_files=["res://.godot/imported/char1.png-8135f8905da776dd0825a14fe7f2cbd7.ctex"]
+source_file="res://assets/levels/padlock.png"
+dest_files=["res://.godot/imported/padlock.png-ff12d45ac74a1677410e7d2cb75190e2.ctex"]
 
 [params]
 

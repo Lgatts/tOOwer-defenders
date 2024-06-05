@@ -10,6 +10,7 @@ var _element: Enums.Elements
 var _damage: int = 1
 var _parent: Enums.Elements = Enums.Elements.UNDEFINED
 var _override_element: bool = false
+var _cost: int = 100
 
 var textures = {
 	Enums.Elements.FIRE: load("res://assets/towers/TowerFire.png"),
@@ -38,7 +39,7 @@ func _init(element: Enums.Elements):
 	
 func instantiate():
 	var instance = _scene.instantiate()
-	instance.construct(_element,_icon, _damage, _parent, _aura, _override_element, _parent_icon)
+	instance.construct(_element,_icon, _damage, _parent, _aura, _override_element, _parent_icon, _cost)
 	return instance
 
 func add_parent(parent: Enums.Elements, override_element):
