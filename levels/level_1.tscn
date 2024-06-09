@@ -83,9 +83,9 @@ _element = 2
 position = Vector2(324, 196)
 _element = 2
 
-[node name="Path2D" type="Path2D" parent="." index="5"]
-curve = SubResource("Curve2D_fnlxn")
+[node name="Towers" parent="." index="5"]
 metadata/_edit_lock_ = true
 
-[node name="Towers" parent="." index="6"]
+[node name="Path2D" type="Path2D" parent="PathPool" index="0"]
+curve = SubResource("Curve2D_fnlxn")
 metadata/_edit_lock_ = true

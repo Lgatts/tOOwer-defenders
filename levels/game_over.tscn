@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://ohxf6eerxq73"]
+[gd_scene load_steps=3 format=3 uid="uid://ohxf6eerxq73"]
+
+[ext_resource type="Script" path="res://levels/game_over.gd" id="1_v6nuw"]
+[ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="2_antc7"]
 
 [node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_v6nuw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -26,10 +30,21 @@ grow_vertical = 2
 
 [node name="Label2" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 120
 text = "Game Over"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 799.0
+offset_top = 759.0
+offset_right = 1136.0
+offset_bottom = 867.0
+theme_override_fonts/font = ExtResource("2_antc7")
+theme_override_font_sizes/font_size = 100
+text = "Continuar"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

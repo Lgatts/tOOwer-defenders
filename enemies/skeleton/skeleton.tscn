@@ -19,3 +19,6 @@ position = Vector2(-1, -5.96046e-08)
 rotation = -3.14159
 scale = Vector2(3.35947, -1.45745)
 shape = SubResource("RectangleShape2D_1inbo")
+
+[node name="SlowTimer" parent="." index="5"]
+wait_time = 5.0

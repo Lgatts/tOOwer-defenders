@@ -87,5 +87,17 @@ libraries = {
 "": SubResource("AnimationLibrary_1r7ve")
 }
 
+[node name="ExitButton" type="Button" parent="CanvasLayer"]
+offset_left = 401.0
+offset_top = 838.0
+offset_right = 815.0
+offset_bottom = 906.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("3_k08m4")
+theme_override_font_sizes/font_size = 59
+text = "Sair"
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_pressed"]

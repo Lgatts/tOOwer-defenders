@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://djdx56msw4rd1"]
+[gd_scene load_steps=4 format=3 uid="uid://djdx56msw4rd1"]
 
 [ext_resource type="Script" path="res://levels/level_complete.gd" id="1_8x76a"]
+[ext_resource type="Script" path="res://levels/wavy_effect.gd" id="2_eafvg"]
+[ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="3_1us1g"]
 
 [node name="LevelComplete" type="CanvasLayer"]
 script = ExtResource("1_8x76a")
@@ -20,18 +22,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -279.0
+offset_top = -110.0
+offset_right = 279.0
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label2" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("3_1us1g")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
 text = "Level Completo!"
-horizontal_alignment = 1
+fit_content = true
+script = ExtResource("2_eafvg")
+amplitude = 40.0
+frequency = 7.0
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2

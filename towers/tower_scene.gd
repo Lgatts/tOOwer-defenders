@@ -109,11 +109,11 @@ func _attack():
 	
 func boldAttack():
 	_set_line_visible(30)
-	targets[0].get_parent().take_damage(_damage, _element)
+	targets[0].get_parent().take_damage(_damage, _get_element())
 
 func simpleAttack():
 	_set_line_visible(10)
-	targets[0].get_parent().take_damage(_damage, _element)
+	targets[0].get_parent().take_damage(_damage, _get_element())
 
 func _set_line_visible(width:int):	
 	var projectileLine:Line2D = projectile_lines.get_children()[0]
@@ -126,8 +126,14 @@ func tripleAttack():
 		projectile_line.width = 10
 		projectile_line.visible = true
 		if(self.targets.size() > counter):
-			targets[counter].get_parent().take_damage(_damage, _element)
+			targets[counter].get_parent().take_damage(_damage, _get_element())
 		counter += 1
+
+func _get_element() -> Enums.Elements:
+	if(_override_element):
+		return _element
+	else:
+		return _parent
 
 func _on_area_2d_area_exited(area):
 	targets.erase(area)

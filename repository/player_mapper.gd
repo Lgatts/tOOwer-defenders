@@ -25,6 +25,7 @@ static func json_to_player(player_string: String):
 	Globals.player.name_text = player_dict["name_text"]
 	Globals.player.texture = load(player_dict["texture"])
 	Globals.player.textureId = player_dict["textureId"]
+	Globals.player.gold = player_dict["gold"]
 	Globals.player.inventory = map_dict_to_inventory(player_dict["inventory"])
 	Globals.player.cleared_levels = player_dict["cleared_levels"]
 

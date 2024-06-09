@@ -1,13 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://nhkwy0w7v6b7"]
+[gd_scene load_steps=16 format=3 uid="uid://nhkwy0w7v6b7"]
 
 [ext_resource type="Script" path="res://levels/over_world.gd" id="1_x7gkq"]
 [ext_resource type="Texture2D" uid="uid://dotjiibxp2vxo" path="res://assets/levels/Level1.png" id="2_hs6x0"]
-[ext_resource type="Texture2D" uid="uid://bpred22m712sl" path="res://assets/levels/Level2.png" id="3_7e10h"]
+[ext_resource type="Texture2D" uid="uid://ddgfen70wa1c3" path="res://assets/levels/Level2.png" id="3_7e10h"]
 [ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="3_ktifu"]
+[ext_resource type="Texture2D" uid="uid://ia76xfoav32s" path="res://assets/ui/Exit.png" id="3_x6i1w"]
 [ext_resource type="Texture2D" uid="uid://dnewc6771gltd" path="res://assets/levels/MapBackground.png" id="4_hlo3l"]
 [ext_resource type="PackedScene" uid="uid://cog41vn4ycjl5" path="res://levels/level_slot.tscn" id="4_lbh46"]
 [ext_resource type="PackedScene" uid="uid://lngx1gma72pp" path="res://levels/level_1.tscn" id="6_2mdvk"]
 [ext_resource type="PackedScene" uid="uid://cx88hvw557wch" path="res://levels/level_2.tscn" id="8_gacg1"]
+[ext_resource type="Texture2D" uid="uid://ywoja03xrym2" path="res://assets/levels/Level3.png" id="10_wpvwn"]
+[ext_resource type="PackedScene" uid="uid://4aaqotgksb7j" path="res://levels/level_3.tscn" id="11_i1s7e"]
+[ext_resource type="Texture2D" uid="uid://pjashnamhsil" path="res://assets/levels/Level4.png" id="12_f451v"]
+[ext_resource type="PackedScene" uid="uid://c0wbmt1b443wr" path="res://levels/level_4.tscn" id="13_r1jmq"]
+[ext_resource type="Texture2D" uid="uid://bqjbbqcadsffj" path="res://assets/levels/Level5.png" id="14_rmdua"]
+[ext_resource type="PackedScene" uid="uid://cy2ajatql2e3o" path="res://levels/level_5.tscn" id="15_y3at7"]
 
 [node name="OverWorld" type="Node2D"]
 script = ExtResource("1_x7gkq")
@@ -21,6 +28,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_hlo3l")
+
+[node name="ExitButton" type="Button" parent="CanvasLayer"]
+offset_left = 1825.0
+offset_top = 29.0
+offset_right = 1891.0
+offset_bottom = 90.0
+icon = ExtResource("3_x6i1w")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
@@ -65,8 +81,8 @@ level_path = ExtResource("8_gacg1")
 [node name="Level3" parent="CanvasLayer/HBoxContainer" instance=ExtResource("4_lbh46")]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("3_7e10h")
-level_path = ExtResource("6_2mdvk")
+texture = ExtResource("10_wpvwn")
+level_path = ExtResource("11_i1s7e")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
 offset_left = 355.0
@@ -80,11 +96,13 @@ theme_override_constants/separation = 44
 [node name="Level4" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("4_lbh46")]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("2_hs6x0")
-level_path = ExtResource("6_2mdvk")
+texture = ExtResource("12_f451v")
+level_path = ExtResource("13_r1jmq")
 
 [node name="Level5" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("4_lbh46")]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("2_hs6x0")
-level_path = ExtResource("6_2mdvk")
+texture = ExtResource("14_rmdua")
+level_path = ExtResource("15_y3at7")
+
+[connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_pressed"]

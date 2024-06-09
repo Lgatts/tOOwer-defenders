@@ -10,6 +10,7 @@ var tower_slot_scene: PackedScene = preload("res://ui/tower_slot.tscn")
 @onready var gold = $HBoxContainer/Gold
 @onready var tower_menu = $TowerMenu
 @onready var instantiate_button = %InstantiateButton
+@onready var enemies_counter = %Enemies_Counter
 
 var selectedTower: Tower
 
@@ -29,6 +30,7 @@ func _ready():
 	update_player_health_bar()
 	update_player_gold()
 	connect_all_tower_slots()
+	Globals.ui_state = Enums.States.DEFAULT
 
 func loadPlayer():
 	player_name.text = Globals.player.name_text
@@ -54,7 +56,8 @@ func _on_level_1_wave_finished():
 	%WaveButton.disabled = false
 	
 func _on_exit_button_pressed():
-	TransitionScene.change_scene("res://game.tscn")
+	Repository.load_game()
+	TransitionScene.change_scene("res://levels/over_world.tscn")
 
 func update_player_health_bar():
 	player_health_bar.value = Globals.player.current_health

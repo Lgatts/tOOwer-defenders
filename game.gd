@@ -14,4 +14,6 @@ func _on_new_game_button_pressed():
 func _on_continue_button_pressed():
 	Repository.load_game()
 	TransitionScene.change_scene("res://levels/over_world.tscn")
-	
+
+func _on_exit_button_pressed():
+	get_tree().quit()

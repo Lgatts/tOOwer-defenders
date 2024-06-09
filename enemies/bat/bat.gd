@@ -2,11 +2,28 @@ extends Enemy
 
 func _init():
 	textures = {
-		Enums.Elements.FIRE: preload("res://assets/enemies/NeutralBat.png"),
-		Enums.Elements.WATER: preload("res://assets/enemies/NeutralBat.png"),
-		Enums.Elements.EARTH: preload("res://assets/enemies/NeutralBat.png"),
-		Enums.Elements.WIND: preload("res://assets/enemies/NeutralBat.png"),
+		Enums.Elements.FIRE: preload("res://assets/enemies/FireBat.png"),
+		Enums.Elements.WATER: preload("res://assets/enemies/WaterBat.png"),
+		Enums.Elements.EARTH: preload("res://assets/enemies/EarthBat.png"),
+		Enums.Elements.WIND: preload("res://assets/enemies/WindBat.png"),
 		Enums.Elements.NEUTRAL: preload("res://assets/enemies/NeutralBat.png")
-	}
-	speed = 5
-	damage = 8
+	}	
+	damage = 2
+
+func _ready():	
+	if(element == Enums.Elements.FIRE):
+		maxHealth = 5
+		speed = 1
+	if(element == Enums.Elements.WATER):
+		maxHealth = 15
+		speed = 2
+	if(element == Enums.Elements.EARTH):
+		maxHealth = 20
+		speed = 2
+	if(element == Enums.Elements.WIND):
+		maxHealth = 10
+		speed = 2
+	if(element == Enums.Elements.NEUTRAL):
+		maxHealth = 10
+		speed = 2
+	super._ready()	

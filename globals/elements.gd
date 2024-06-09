@@ -19,3 +19,9 @@ enum LevelState {
 	ENABLED,
 	CLEARED
 }
+
+enum AttackType {
+	NORMAL,
+	WEAK,
+	STRONG
+}

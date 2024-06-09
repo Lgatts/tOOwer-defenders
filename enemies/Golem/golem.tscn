@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdxf3eihyvovh"]
+
+[ext_resource type="PackedScene" uid="uid://0k0ly3ct38se" path="res://enemies/enemy.tscn" id="1_yho2f"]
+[ext_resource type="Script" path="res://enemies/Golem/golem.gd" id="2_sd0dm"]
+[ext_resource type="Texture2D" uid="uid://cdsknvyk01xt3" path="res://assets/enemies/NeutralGolem.png" id="3_1hqdd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41h5y"]
+size = Vector2(60, 62)
+
+[node name="Golem" instance=ExtResource("1_yho2f")]
+script = ExtResource("2_sd0dm")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_1hqdd")
+frame = 6
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_41h5y")
+
+[node name="HeathBar" parent="." index="3"]
+offset_left = -26.0
+offset_top = -43.0
+offset_right = 25.0
+offset_bottom = -35.0

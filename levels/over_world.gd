@@ -12,3 +12,6 @@ func _ready():
 	level_3.change_level_state(Globals.player.cleared_levels["level_3"])
 	level_4.change_level_state(Globals.player.cleared_levels["level_4"])
 	level_5.change_level_state(Globals.player.cleared_levels["level_5"])
+
+func _on_exit_button_pressed():
+	TransitionScene.change_scene("res://game.tscn")

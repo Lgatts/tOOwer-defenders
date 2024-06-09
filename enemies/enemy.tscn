@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://0k0ly3ct38se"]
+[gd_scene load_steps=12 format=3 uid="uid://0k0ly3ct38se"]
 
 [ext_resource type="Material" uid="uid://dxj6kwcuiwko6" path="res://shaders/pixel_smooth.tres" id="1_huog6"]
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_p8e83"]
 [ext_resource type="Texture2D" uid="uid://cbsevo7c745yi" path="res://assets/enemies/FireSkeleton.png" id="2_wpkhx"]
+[ext_resource type="Script" path="res://enemies/components/damage_display.gd" id="4_ksrn2"]
 
 [sub_resource type="Animation" id="Animation_0xw27"]
 resource_name = "walk_down"
@@ -87,6 +89,7 @@ bg_color = Color(0.909804, 0.168627, 0.247059, 1)
 [node name="Enemy" type="PathFollow2D"]
 rotates = false
 loop = false
+script = ExtResource("1_p8e83")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = ExtResource("1_huog6")
@@ -116,3 +119,11 @@ value = 5.0
 show_percentage = false
 
 [node name="DeathTimer" type="Timer" parent="."]
+
+[node name="SlowTimer" type="Timer" parent="."]
+
+[node name="DamageOrigin" type="Node2D" parent="."]
+position = Vector2(0, -24)
+script = ExtResource("4_ksrn2")
+
+[connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]

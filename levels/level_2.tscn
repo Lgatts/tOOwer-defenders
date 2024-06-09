@@ -62,5 +62,5 @@ _element = 2
 position = Vector2(5, -301)
 _element = 2
 
-[node name="Path2D" type="Path2D" parent="." index="5"]
+[node name="Path2D" type="Path2D" parent="PathPool" index="0"]
 curve = SubResource("Curve2D_rluho")

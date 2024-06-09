@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://q0qrdajr8b5a"]
+
+[ext_resource type="Material" uid="uid://dxj6kwcuiwko6" path="res://shaders/pixel_smooth.tres" id="1_puier"]
+[ext_resource type="Script" path="res://enemies/computer/computer.gd" id="1_x4osy"]
+[ext_resource type="Texture2D" uid="uid://cqcdtgmq0es1r" path="res://assets/enemies/Computer.png" id="3_aqt63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1duu0"]
+size = Vector2(192, 127)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4kyv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7e04"]
+bg_color = Color(0.909804, 0.168627, 0.247059, 1)
+
+[node name="Computer" type="Area2D"]
+script = ExtResource("1_x4osy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -0.5)
+shape = SubResource("RectangleShape2D_1duu0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_puier")
+texture = ExtResource("3_aqt63")
+
+[node name="HeathBar" type="ProgressBar" parent="."]
+offset_left = -109.0
+offset_top = -74.0
+offset_right = 111.0
+offset_bottom = -66.0
+theme_override_styles/background = SubResource("StyleBoxFlat_s4kyv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_v7e04")
+max_value = 10.0
+value = 5.0
+show_percentage = false
+
+[node name="DeathTimer" type="Timer" parent="."]

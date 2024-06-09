@@ -9,7 +9,7 @@ var _parent_icon: Texture2D
 var _element: Enums.Elements
 var _damage: int = 1
 var _parent: Enums.Elements = Enums.Elements.UNDEFINED
-var _override_element: bool = false
+var _override_element: bool = true
 var _cost: int = 100
 
 var textures = {
