@@ -68,7 +68,7 @@ func _hit_player():
 	Globals.player.current_health -= damage
 	queue_free()
 	
-func take_damage(tower_damage:int, _tower_element:Enums.Elements):
+func take_damage(tower_damage:int, _tower_element:Enums.Elements):	
 	if(_tower_element == element):
 		damage_origin.display_damage(0, Enums.AttackType.WEAK)
 		return
@@ -90,7 +90,7 @@ func _on_slow_timer_timeout():
 
 func _calcDamage(tower_damage, _tower_element) -> int:
 	if(elemental_weakness[_tower_element] == element):
-		var damage_take = tower_damage/2
+		var damage_take = tower_damage / 2
 		damage_origin.display_damage(damage_take, Enums.AttackType.WEAK)
 		return damage_take
 	if(elemental_strength[_tower_element] == element):
@@ -98,5 +98,5 @@ func _calcDamage(tower_damage, _tower_element) -> int:
 		damage_origin.display_damage(damage_take, Enums.AttackType.STRONG)
 		return damage_take
 	else:
-		damage_origin.display_damage(damage, Enums.AttackType.NORMAL)
-		return damage
+		damage_origin.display_damage(tower_damage, Enums.AttackType.NORMAL)
+		return tower_damage

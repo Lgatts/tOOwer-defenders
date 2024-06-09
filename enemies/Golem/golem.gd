@@ -10,15 +10,20 @@ func _init():
 	}
 	speed = 0.2
 
-func _ready():	
+func _ready():
 	if(element == Enums.Elements.FIRE):
-		maxHealth = 50		
+		maxHealth = 50
+		droped_gold = 50
 	if(element == Enums.Elements.WATER):
-		maxHealth = 60		
+		maxHealth = 60
+		droped_gold = 70
 	if(element == Enums.Elements.EARTH):
-		maxHealth = 70		
+		maxHealth = 70
+		droped_gold = 90
 	if(element == Enums.Elements.WIND):
-		maxHealth = 80		
+		maxHealth = 80
+		droped_gold = 110
 	if(element == Enums.Elements.NEUTRAL):
-		maxHealth = 100		
+		maxHealth = 100
+		droped_gold = 150
 	super._ready()

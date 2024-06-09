@@ -1972,6 +1972,10 @@ texture = ExtResource("7_0300p")
 
 [node name="PathPool" type="Node2D" parent="."]
 
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
 [connection signal="wave_finished" from="." to="UI" method="_on_level_1_wave_finished"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="wave_button_clicked" from="UI" to="." method="_on_ui_wave_button_clicked"]
+[connection signal="finished" from="LevelMusic" to="." method="_on_level_music_finished"]

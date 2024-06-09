@@ -15,12 +15,17 @@ func _ready():
 	if(element == Enums.Elements.FIRE):
 		maxHealth = 10
 		speed = 0.4
+		droped_gold = 25
 	if(element == Enums.Elements.WATER):
 		maxHealth = 15
+		droped_gold = 35
 	if(element == Enums.Elements.EARTH):
 		maxHealth = 20
+		droped_gold = 45
 	if(element == Enums.Elements.WIND):
 		maxHealth = 25
+		droped_gold = 55
 	if(element == Enums.Elements.NEUTRAL):
-		maxHealth = 30
+		maxHealth = 15
+		droped_gold = 65
 	super._ready()

@@ -8,9 +8,8 @@ var golem: PackedScene = preload("res://enemies/Golem/golem.tscn")
 var _waves_controller: WavesController
 var end_level: bool = true
 @onready var path_pool = $PathPool
-
-@onready
-var spawn_timer: Timer = $SpawnTimer
+@onready var level_music = $LevelMusic
+@onready var spawn_timer: Timer = $SpawnTimer
 
 signal wave_finished
 
@@ -20,6 +19,7 @@ func _on_complete_level():
 func _ready():
 	Globals.player.reset_health()
 	Globals.player.reset_gold()
+	level_music.play()
 
 func _process(_delta):
 	if(Globals.player.current_health <= 0):
@@ -50,3 +50,7 @@ func no_enemies_left():
 		if(path.get_children().size() > 0):
 			had_enemies_left = false
 	return 	had_enemies_left
+
+
+func _on_level_music_finished():
+	level_music.play()

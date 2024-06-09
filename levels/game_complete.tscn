@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfwnr5s6yvc83"]
+
+[ext_resource type="Script" path="res://levels/game_complete.gd" id="1_ekdmr"]
+[ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="2_17wcp"]
+
+[node name="GameComplete" type="CanvasLayer"]
+script = ExtResource("1_ekdmr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.572549, 1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -337.0
+offset_top = 151.0
+offset_right = 296.0
+offset_bottom = 374.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = ExtResource("2_17wcp")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[tornado]Parabens!![/tornado]"
+
+[node name="ContinueButton" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -108.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_17wcp")
+theme_override_font_sizes/font_size = 100
+text = "Continue"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 603.0
+offset_top = 321.0
+offset_right = 1121.0
+offset_bottom = 444.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_17wcp")
+theme_override_font_sizes/font_size = 80
+text = "Obrigado por jogar!"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 416.0
+offset_top = 459.0
+offset_right = 1403.0
+offset_bottom = 1023.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_17wcp")
+theme_override_font_sizes/font_size = 60
+text = "Desenvolvedor                          Musica
+ Lucas Martins                            YouFulca
+
+Arte
+ Finalbossblues
+ Jose Javier (SnowHex)
+ Nyx
+ Lucas Martins
+
+"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

@@ -8,6 +8,11 @@ signal tower_clicked
 @onready var range_indicator = $RangeIndicator
 @onready var tower_actions = %TowerActions
 @onready var change_attack_button = $TowerSprite/TowerActions/ChangeAttackButton
+@onready var up_attack_button = $TowerSprite/TowerActions/UpAttackButton
+@onready var laser_audio = $LaserAudio
+@onready var power_up_audio = $PowerUpAudio
+
+
 var _damage: int = 1
 var _element: Enums.Elements = Enums.Elements.NEUTRAL
 var targets: Array[Area2D]
@@ -23,6 +28,7 @@ var _parent: Enums.Elements
 var _override_element: bool = true
 var _override_attack: bool = false
 var _cost: int
+var _up_damage_cost: int = 50
 
 var attack_colors = {
 	Enums.Elements.FIRE: Color.html("#ff8691"),
@@ -91,6 +97,13 @@ func _process(_delta):
 	else:
 		if(placed):
 			_update_attack_line_position()
+	_set_up_attack_visbility()
+
+func _set_up_attack_visbility():
+	if(Globals.player.gold < _up_damage_cost):
+		up_attack_button.visible = false
+	else:
+		up_attack_button.visible = true
 
 func _update_attack_line_position():
 	var counter = 0
@@ -101,6 +114,7 @@ func _update_attack_line_position():
 		counter += 1
 
 func _attack():
+	laser_audio.play()
 	if _override_attack:
 		attacks[_parent].call()
 	else:
@@ -189,6 +203,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 			tower_actions.visible = true
 			
 func delete_tower():
+	Globals.player.gold += 75
 	current_tower_pad.has_turret = false
 	queue_free()
 
@@ -204,3 +219,11 @@ func _on_change_attack_button_clicked():
 		_override_attack = true
 		change_attack_button.texture = _texture
 		change_attack_button.tooltip_text = "Usar ataque original"
+
+func _on_up_attack_button_clicked():
+	power_up_audio.play()
+	Globals.player.gold -= _up_damage_cost
+	_up_damage_cost += 50
+	up_attack_button.tooltip_text = "Aumentar dano\n" + "Custo: " + str(_up_damage_cost)
+	_damage += 1
+

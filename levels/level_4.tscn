@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0wbmt1b443wr"]
+[gd_scene load_steps=6 format=3 uid="uid://c0wbmt1b443wr"]
 
 [ext_resource type="PackedScene" uid="uid://djkojnfohxlnd" path="res://levels/level.tscn" id="1_75kq3"]
 [ext_resource type="Script" path="res://levels/level_4.gd" id="2_euyii"]
 [ext_resource type="PackedScene" uid="uid://cbkr4dys0xhb8" path="res://tiles/tower_pad.tscn" id="3_ylstb"]
+[ext_resource type="AudioStream" uid="uid://dhr8d5cpbp845" path="res://assets/sounds/Level4.mp3" id="4_ea4pa"]
 
 [sub_resource type="Curve2D" id="Curve2D_x8cnl"]
 _data = {
@@ -120,3 +121,6 @@ _element = 1
 
 [node name="Path2D" type="Path2D" parent="PathPool" index="0"]
 curve = SubResource("Curve2D_x8cnl")
+
+[node name="LevelMusic" parent="." index="7"]
+stream = ExtResource("4_ea4pa")
