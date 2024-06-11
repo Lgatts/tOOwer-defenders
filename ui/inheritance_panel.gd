@@ -24,7 +24,6 @@ var element_names = {
 	Enums.Elements.NEUTRAL: "[center][color=white]Neutro[/color][/center]",
 }
 
-
 var icons = {
 	Enums.Elements.FIRE: load("res://assets/ui/TowerFireBIG.png"),
 	Enums.Elements.WATER: load("res://assets/ui/TowerWaterBIG.png"),
