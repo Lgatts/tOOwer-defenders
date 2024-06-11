@@ -4,6 +4,8 @@ extends Control
 @onready var option_button = $OptionButton
 @onready var selected_tower:Tower 
 @onready var check_button = $CheckButton
+@onready var elemento = $Elemento
+
 var _override_element:bool = true
 
 var names = {
@@ -13,6 +15,15 @@ var names = {
 	Enums.Elements.WIND: "Vento",
 	Enums.Elements.NEUTRAL: "Neutro",
 }
+
+var element_names = {
+	Enums.Elements.FIRE: "[center][color=red]Fogo[/color][/center]",
+	Enums.Elements.WATER: "[center][color=cyan]Gelo[/color][/center]",
+	Enums.Elements.EARTH: "[center][color=brown]Terra[/color][/center]",
+	Enums.Elements.WIND: "[center][color=green]Vento[/color][/center]",
+	Enums.Elements.NEUTRAL: "[center][color=white]Neutro[/color][/center]",
+}
+
 
 var icons = {
 	Enums.Elements.FIRE: load("res://assets/ui/TowerFireBIG.png"),
@@ -24,6 +35,7 @@ var icons = {
 
 func create(tower: Tower):
 	selected_tower = tower
+	elemento.text = element_names[selected_tower._element]
 	sub_class.texture = selected_tower._icon
 	load_parent_class_options()
 	_override_element = true
@@ -53,6 +65,10 @@ func _on_make_inheritance_button_pressed():
 
 func _on_check_button_toggled(toggled_on):
 	_override_element = toggled_on
+	if(_override_element):
+		elemento.text = element_names[selected_tower._element]
+	else:
+		elemento.text = element_names[option_button.get_selected_metadata()._element]
 
 func _on_option_button_item_selected(index):
 	if (option_button.get_item_metadata(index)._element == Enums.Elements.UNDEFINED):

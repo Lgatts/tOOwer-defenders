@@ -72,9 +72,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -41.6095
-offset_top = -456.0
+offset_top = -513.5
 offset_right = -9.6095
-offset_bottom = -424.0
+offset_bottom = -481.5
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(3, 3)
@@ -94,22 +94,27 @@ metadata/_edit_lock_ = true
 
 [node name="MakeInheritanceButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 191.668
-offset_top = 555.0
-offset_right = 477.668
-offset_bottom = 605.0
+offset_left = 194.446
+offset_top = 632.5
+offset_right = 480.446
+offset_bottom = 682.5
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_6arbk")
+theme_override_font_sizes/font_size = 50
 text = "Herdar"
 
 [node name="CheckButton" type="CheckButton" parent="."]
 layout_mode = 0
-offset_left = 219.446
-offset_top = 485.0
-offset_right = 446.446
-offset_bottom = 516.0
+offset_left = 191.668
+offset_top = 455.0
+offset_right = 467.668
+offset_bottom = 493.0
 tooltip_text = "Usa o elemento original da torre filha, pois sobrescreve o da torre mãe"
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6arbk")
+theme_override_font_sizes/font_size = 30
 button_pressed = true
 text = "Sobrescrever Elemento"
 
@@ -127,6 +132,20 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("2_6arbk")
 theme_override_font_sizes/font_size = 42
 text = "x"
+
+[node name="Elemento" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 250.001
+offset_top = 525.0
+offset_right = 422.001
+offset_bottom = 588.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = ExtResource("2_6arbk")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Elemento[/center]
+"
 
 [connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="MakeInheritanceButton" to="." method="_on_make_inheritance_button_pressed"]

@@ -1,6 +1,7 @@
 extends Level
 
 func _ready():
+	chat.display_chat(Level4Dialog.dialogs4)
 	super._ready()
 	var waves = [
 		Wave.new(10, skeleton, Enums.Elements.EARTH),

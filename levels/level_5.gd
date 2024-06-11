@@ -5,6 +5,7 @@ extends Node2D
 @onready var spawn_timer = $SpawnTimer
 @onready var ui = $UI
 @onready var level_music = $LevelMusic
+@onready var chat = $Chat
 
 var _level_end: bool = false
 
@@ -17,6 +18,7 @@ var enemies = [
 var rng: RandomNumberGenerator
 
 func _ready():
+	chat.display_chat(Level5Dialog.dialogs5)
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 	Globals.player.reset_health()
@@ -68,3 +70,8 @@ func _on_computer_computer_die():
 	
 func _on_level_music_finished():
 	level_music.play()
+
+func _on_chat_dialog_finished():
+	ui.wave_button.disabled = false
+	level_music.play_level_music()
+	
