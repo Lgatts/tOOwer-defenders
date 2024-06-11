@@ -11,7 +11,7 @@ signal tower_clicked
 @onready var up_attack_button = $TowerSprite/TowerActions/UpAttackButton
 @onready var laser_audio = $LaserAudio
 @onready var power_up_audio = $PowerUpAudio
-
+@onready var placed_timer = $PlacedTimer
 
 var _damage: int = 1
 var _element: Enums.Elements = Enums.Elements.NEUTRAL
@@ -39,10 +39,10 @@ var attack_colors = {
 }
 
 var attacks = {
-	Enums.Elements.FIRE: simpleAttack,
+	Enums.Elements.FIRE: explosiveAttack,
 	Enums.Elements.WATER: tripleAttack,
-	Enums.Elements.EARTH: simpleAttack,
-	Enums.Elements.WIND: simpleAttack,
+	Enums.Elements.EARTH: pauseAttack,
+	Enums.Elements.WIND: fastAttack,
 	Enums.Elements.NEUTRAL: boldAttack
 }
 
@@ -122,11 +122,24 @@ func _attack():
 	attack_timer.start()
 	
 func boldAttack():
+	attack_timer.wait_time = 0.6
 	_set_line_visible(30)
-	targets[0].get_parent().take_damage(_damage, _get_element())
+	targets[0].get_parent().take_damage(_damage * 2, _get_element())
 
-func simpleAttack():
+func pauseAttack():
+	attack_timer.wait_time = 0.5
 	_set_line_visible(10)
+	targets[0].get_parent().take_damage(_damage, _get_element(), true)
+
+func explosiveAttack():
+	attack_timer.wait_time = 0.7
+	_set_line_visible(15)
+	for enemie in targets:
+		enemie.get_parent().take_damage(_damage, _get_element())
+	
+func fastAttack():
+	attack_timer.wait_time = 0.1
+	_set_line_visible(15)
 	targets[0].get_parent().take_damage(_damage, _get_element())
 
 func _set_line_visible(width:int):	
@@ -135,7 +148,8 @@ func _set_line_visible(width:int):
 	projectileLine.visible = true
 
 func tripleAttack():
-	var counter = 0	
+	attack_timer.wait_time = 0.4
+	var counter = 0
 	for projectile_line in projectile_lines.get_children():
 		projectile_line.width = 10
 		projectile_line.visible = true
@@ -158,12 +172,12 @@ func _calc_relative_position(targetId: int) -> Vector2:
 	else:
 		return Vector2.ZERO
 
-func _do_damage():	
+func _do_damage():
 	_attack()
 
-func place():
-	Globals.player.gold -= _cost
-	self.placed = true
+func place():	
+	placed_timer.start()
+	Globals.player.gold -= _cost	
 	self.can_be_placed = false
 	self.current_tower_pad.has_turret = true
 	self.range_indicator.visible = false
@@ -179,7 +193,8 @@ func place():
 		change_attack_button.visible = false
 	else:
 		change_attack_button.texture = _parent_icon
-		change_attack_button.tooltip_text = "Usar ataque torre mãe"
+		change_attack_button.tooltip_text = "Usar ataque da classe mãe"	
+	tower_actions.visible = true	
 
 func _on_mouse_entered():
 	if(placed and Globals.ui_state == Enums.States.DEFAULT):
@@ -192,10 +207,10 @@ func _on_mouse_exited():
 func _isLeftClickMouse(event) -> bool:
 	return (event is InputEventMouseButton 
 		and event.button_index == MOUSE_BUTTON_LEFT 
-		and event.pressed
+		and event.is_pressed()
 		and placed)
 
-func _on_input_event(_viewport, event, _shape_idx):
+func _on_input_event(_viewport, event, _shape_idx):	
 	if _isLeftClickMouse(event):
 		if(tower_actions.visible):
 			tower_actions.visible = false
@@ -214,7 +229,7 @@ func _on_change_attack_button_clicked():
 	if(_override_attack):
 		_override_attack = false
 		change_attack_button.texture = _parent_icon
-		change_attack_button.tooltip_text = "Usar ataque torre mãe"
+		change_attack_button.tooltip_text = "Usar ataque da classe mãe"
 	else:
 		_override_attack = true
 		change_attack_button.texture = _texture
@@ -227,3 +242,5 @@ func _on_up_attack_button_clicked():
 	up_attack_button.tooltip_text = "Aumentar dano\n" + "Custo: " + str(_up_damage_cost)
 	_damage += 1
 
+func _on_placed_timer_timeout():
+	self.placed = true

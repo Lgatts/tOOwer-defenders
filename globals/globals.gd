@@ -20,3 +20,5 @@ func _isLeftClickMouse(event) -> bool:
 	return (event is InputEventMouseButton 
 		and event.button_index == MOUSE_BUTTON_LEFT 
 		and event.pressed)
+
+var audio_position

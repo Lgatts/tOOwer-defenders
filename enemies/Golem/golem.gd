@@ -9,6 +9,7 @@ func _init():
 		Enums.Elements.NEUTRAL: preload("res://assets/enemies/NeutralGolem.png")
 	}
 	speed = 0.2
+	enemy_type = Enums.EnemiesType.GOLEM
 
 func _ready():
 	if(element == Enums.Elements.FIRE):

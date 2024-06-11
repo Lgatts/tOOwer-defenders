@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckhwq6t8ybben"]
+[gd_scene load_steps=7 format=3 uid="uid://ckhwq6t8ybben"]
 
 [ext_resource type="Texture2D" uid="uid://d0ksnpb5c0kin" path="res://assets/ui/TitleScreenBackground.png" id="1_jc5l1"]
 [ext_resource type="Script" path="res://game.gd" id="1_o58xa"]
 [ext_resource type="FontFile" uid="uid://c5skvctsq0yh5" path="res://assets/fonts/LondonPresley.ttf" id="3_k08m4"]
+[ext_resource type="AudioStream" uid="uid://c0y81f1sn83q3" path="res://assets/sounds/Title.mp3" id="4_lxntj"]
 
 [sub_resource type="Animation" id="Animation_hj7eu"]
 resource_name = "title"
@@ -97,6 +98,11 @@ theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("3_k08m4")
 theme_override_font_sizes/font_size = 59
 text = "Sair"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lxntj")
+volume_db = -15.313
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]

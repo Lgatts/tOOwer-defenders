@@ -54,6 +54,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 icon = ExtResource("2_54mfd")
 icon_alignment = 1
 expand_icon = true

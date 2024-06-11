@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://m0lipdc6sc8o"]
+
+[ext_resource type="Script" path="res://screens/Components/chat.gd" id="1_7i6hu"]
+[ext_resource type="Texture2D" uid="uid://bph22sw2eqnwv" path="res://assets/player/Astra.png" id="1_l1sb2"]
+[ext_resource type="Texture2D" uid="uid://b1qeebfqyyamw" path="res://assets/player/char2.png" id="2_twdjo"]
+[ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="3_g0l2v"]
+[ext_resource type="AudioStream" uid="uid://h5w4s1ixn7hp" path="res://assets/sounds/Dialog.mp3" id="5_85iyp"]
+
+[node name="Chat" type="CanvasLayer"]
+script = ExtResource("1_7i6hu")
+
+[node name="Astra" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -768.0
+offset_right = 512.0
+grow_vertical = 0
+texture = ExtResource("1_l1sb2")
+
+[node name="Player" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -768.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_twdjo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -425.0
+offset_top = -280.0
+offset_right = 425.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 655
+
+[node name="SkipButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_g0l2v")
+theme_override_font_sizes/font_size = 40
+text = "Pular"
+
+[node name="NextButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_g0l2v")
+theme_override_font_sizes/font_size = 40
+text = "Avançar"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(850, 280)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+color = Color(0, 0, 0, 0.552941)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ChatText" type="RichTextLabel" parent="VBoxContainer/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/normal_font = ExtResource("3_g0l2v")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Quando uma classe é definida, ela serve como um modelo ou blueprint que descreve as propriedades e comportamentos dos objetos desse tipo. A instanciação envolve alocar memória e inicializar uma nova variável de o"
+fit_content = true
+tab_size = 9
+text_direction = 1
+
+[node name="ChatMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_85iyp")
+volume_db = -15.0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfwnr5s6yvc83"]
+[gd_scene load_steps=4 format=3 uid="uid://cfwnr5s6yvc83"]
 
 [ext_resource type="Script" path="res://levels/game_complete.gd" id="1_ekdmr"]
 [ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="2_17wcp"]
+[ext_resource type="AudioStream" uid="uid://ctqy8eviwfcew" path="res://assets/sounds/End.mp3" id="3_r4eb8"]
 
 [node name="GameComplete" type="CanvasLayer"]
 script = ExtResource("1_ekdmr")
@@ -76,5 +77,10 @@ Arte
  Lucas Martins
 
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_r4eb8")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ohxf6eerxq73"]
+[gd_scene load_steps=4 format=3 uid="uid://ohxf6eerxq73"]
 
 [ext_resource type="Script" path="res://levels/game_over.gd" id="1_v6nuw"]
 [ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="2_antc7"]
+[ext_resource type="AudioStream" uid="uid://kigdmugjklb0" path="res://assets/sounds/Rest-in-Peace.mp3" id="3_400u2"]
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_v6nuw")
@@ -46,5 +47,10 @@ offset_bottom = 867.0
 theme_override_fonts/font = ExtResource("2_antc7")
 theme_override_font_sizes/font_size = 100
 text = "Continuar"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_400u2")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

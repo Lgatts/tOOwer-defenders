@@ -1,7 +1,6 @@
 extends Level
 
 func _ready():
-	super._ready()
 	var waves = [
 		Wave.new(4, skeleton, Enums.Elements.FIRE),
 		Wave.new(10, skeleton, Enums.Elements.FIRE),
@@ -10,6 +9,14 @@ func _ready():
 		Wave.new(1, golem, Enums.Elements.FIRE),
 	]
 	self._waves_controller = WavesController.new(waves)
+	
+	var programmer = "programador"
+	if(Globals.player.textureId == 0):
+		programmer = "programadora"
+	Level1Dialog.dialogs[0]= Level1Dialog.dialogs[0].replace("{player_name}",Globals.player.name_text)
+	Level1Dialog.dialogs[1] = Level1Dialog.dialogs[1].replace("{programador}", programmer)
+	super._ready()
+	chat.display_chat(Level1Dialog.dialogs)
 
 func _on_complete_level():
 	if(Globals.player.inventory.size() == 1):

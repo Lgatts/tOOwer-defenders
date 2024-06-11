@@ -12,6 +12,7 @@ var element: Enums.Elements
 var textures
 var damage: int = 1
 var maxHealth: int = 10
+var enemy_type: Enums.EnemiesType
 
 @onready var healthBar: ProgressBar = $HeathBar
 @onready var death_timer:Timer = $DeathTimer
@@ -68,12 +69,16 @@ func _hit_player():
 	Globals.player.current_health -= damage
 	queue_free()
 	
-func take_damage(tower_damage:int, _tower_element:Enums.Elements):	
+func take_damage(tower_damage:int, _tower_element:Enums.Elements, _pause_damage: bool = false):	
 	if(_tower_element == element):
 		damage_origin.display_damage(0, Enums.AttackType.WEAK)
 		return
 	if(_tower_element == Enums.Elements.WATER):
 		current_speed = speed * 0.4
+		slow_timer.start()
+	if(_pause_damage and enemy_type != Enums.EnemiesType.GOLEM):
+		slow_timer.wait_time = 2
+		current_speed = 0
 		slow_timer.start()
 	var damage_taken = _calcDamage(tower_damage, _tower_element)	
 	healthBar.value -= damage_taken

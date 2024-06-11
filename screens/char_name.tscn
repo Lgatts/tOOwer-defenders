@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg1a470gxcuki"]
+[gd_scene load_steps=6 format=3 uid="uid://cg1a470gxcuki"]
 
 [ext_resource type="Script" path="res://screens/char_name.gd" id="1_1a3dr"]
 [ext_resource type="Texture2D" uid="uid://d0ksnpb5c0kin" path="res://assets/ui/TitleScreenBackground.png" id="2_p0p5h"]
 [ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="3_1urbj"]
 [ext_resource type="Texture2D" uid="uid://b1qeebfqyyamw" path="res://assets/player/char2.png" id="5_n3w7i"]
+[ext_resource type="AudioStream" uid="uid://c0y81f1sn83q3" path="res://assets/sounds/Title.mp3" id="5_spxqx"]
 
 [node name="CharName" type="CanvasLayer"]
 script = ExtResource("1_1a3dr")
@@ -79,6 +80,10 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1urbj")
 theme_override_font_sizes/font_size = 80
 placeholder_text = "Seu nome"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_spxqx")
+volume_db = -15.0
 
 [connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

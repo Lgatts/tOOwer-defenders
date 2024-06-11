@@ -1,6 +1,7 @@
 extends Level
 
-func _ready():
+func _ready():	 
+	chat.display_chat(Level3Dialog.dialogs3)
 	super._ready()
 	var waves = [
 		Wave.new(10, skeleton, Enums.Elements.WATER),

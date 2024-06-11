@@ -11,6 +11,8 @@ var tower_slot_scene: PackedScene = preload("res://ui/tower_slot.tscn")
 @onready var tower_menu = $TowerMenu
 @onready var instantiate_button = %InstantiateButton
 @onready var enemies_counter = %Enemies_Counter
+@onready var inheritance_button = %InheritanceButton
+@onready var wave_button = %WaveButton
 
 var selectedTower: Tower
 
@@ -34,7 +36,8 @@ func _ready():
 
 func loadPlayer():
 	player_name.text = Globals.player.name_text
-	player_texture.texture = Globals.player.texture
+	player_texture.texture = Globals.player.texture	
+	inheritance_button.visible = Globals.player.inventory.size() > 1	
 	if(Globals.player.textureId == 1):
 		player_texture.flip_h = true
 

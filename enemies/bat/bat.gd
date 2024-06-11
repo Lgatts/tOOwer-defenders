@@ -9,6 +9,7 @@ func _init():
 		Enums.Elements.NEUTRAL: preload("res://assets/enemies/NeutralBat.png")
 	}	
 	damage = 2
+	enemy_type = Enums.EnemiesType.BAT
 
 func _ready():	
 	if(element == Enums.Elements.FIRE):

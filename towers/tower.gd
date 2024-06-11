@@ -33,8 +33,6 @@ var aura_textures = {
 func _init(element: Enums.Elements):
 	if(element != Enums.Elements.UNDEFINED):
 		_icon = textures[element]
-		if(element == Enums.Elements.NEUTRAL):
-			_damage = 2
 	_element = element
 	
 func instantiate():

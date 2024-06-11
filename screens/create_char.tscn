@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dexghj3anq027"]
+[gd_scene load_steps=7 format=3 uid="uid://dexghj3anq027"]
 
 [ext_resource type="Texture2D" uid="uid://d0ksnpb5c0kin" path="res://assets/ui/TitleScreenBackground.png" id="1_43ky6"]
 [ext_resource type="Script" path="res://screens/create_char.gd" id="1_tbrg1"]
 [ext_resource type="PackedScene" uid="uid://1luh5g2frrks" path="res://screens/Components/char_slot.tscn" id="2_fem6h"]
 [ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="2_iyo8w"]
 [ext_resource type="Texture2D" uid="uid://b1qeebfqyyamw" path="res://assets/player/char2.png" id="4_c81kh"]
+[ext_resource type="AudioStream" uid="uid://c0y81f1sn83q3" path="res://assets/sounds/Title.mp3" id="6_v1cuk"]
 
 [node name="CreateChar" type="CanvasLayer"]
 script = ExtResource("1_tbrg1")
@@ -54,3 +55,24 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("4_c81kh")
 _id = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_v1cuk")
+volume_db = -15.0
+
+[node name="BackButton" type="Button" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = -151.0
+offset_right = 312.0
+offset_bottom = -43.0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_iyo8w")
+theme_override_font_sizes/font_size = 100
+text = "Voltar"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

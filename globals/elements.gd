@@ -25,3 +25,9 @@ enum AttackType {
 	WEAK,
 	STRONG
 }
+
+enum EnemiesType {
+	GOLEM,
+	BAT,
+	SKELETON
+}

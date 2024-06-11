@@ -2,8 +2,10 @@ extends CanvasLayer
 
 @onready var texture_rect = $CharsContainer/TextureRect
 @onready var line_edit = $LineEdit
+@onready var audio_stream_player = $AudioStreamPlayer
 
 func _ready():
+	audio_stream_player.play(Globals.audio_position)
 	texture_rect.texture = Globals.player.texture
 	line_edit.grab_focus()
 	if( Globals.player.textureId == 1):

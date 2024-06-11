@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://djdx56msw4rd1"]
+[gd_scene load_steps=5 format=3 uid="uid://djdx56msw4rd1"]
 
 [ext_resource type="Script" path="res://levels/level_complete.gd" id="1_8x76a"]
 [ext_resource type="Script" path="res://levels/wavy_effect.gd" id="2_eafvg"]
 [ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="3_1us1g"]
+[ext_resource type="AudioStream" uid="uid://coc00wjm25i3d" path="res://assets/sounds/Victory.mp3" id="4_fnhx5"]
 
 [node name="LevelComplete" type="CanvasLayer"]
 script = ExtResource("1_8x76a")
@@ -50,7 +51,15 @@ theme_override_font_sizes/font_size = 35
 
 [node name="ContinueButton" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_1us1g")
+theme_override_font_sizes/font_size = 80
 text = "Continuar"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fnhx5")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

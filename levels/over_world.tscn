@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://nhkwy0w7v6b7"]
+[gd_scene load_steps=17 format=3 uid="uid://nhkwy0w7v6b7"]
 
 [ext_resource type="Script" path="res://levels/over_world.gd" id="1_x7gkq"]
 [ext_resource type="Texture2D" uid="uid://dotjiibxp2vxo" path="res://assets/levels/Level1.png" id="2_hs6x0"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c0wbmt1b443wr" path="res://levels/level_4.tscn" id="13_r1jmq"]
 [ext_resource type="Texture2D" uid="uid://bqjbbqcadsffj" path="res://assets/levels/Level5.png" id="14_rmdua"]
 [ext_resource type="PackedScene" uid="uid://cy2ajatql2e3o" path="res://levels/level_5.tscn" id="15_y3at7"]
+[ext_resource type="AudioStream" uid="uid://ddjftwwi203e7" path="res://assets/sounds/Menu.mp3" id="16_ql415"]
 
 [node name="OverWorld" type="Node2D"]
 script = ExtResource("1_x7gkq")
@@ -104,5 +105,10 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("14_rmdua")
 level_path = ExtResource("15_y3at7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_ql415")
+volume_db = -20.417
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_pressed"]

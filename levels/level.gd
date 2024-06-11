@@ -10,6 +10,8 @@ var end_level: bool = true
 @onready var path_pool = $PathPool
 @onready var level_music = $LevelMusic
 @onready var spawn_timer: Timer = $SpawnTimer
+@onready var chat = $Chat
+@onready var ui = $UI
 
 signal wave_finished
 
@@ -18,8 +20,7 @@ func _on_complete_level():
 
 func _ready():
 	Globals.player.reset_health()
-	Globals.player.reset_gold()
-	level_music.play()
+	Globals.player.reset_gold()	
 
 func _process(_delta):
 	if(Globals.player.current_health <= 0):
@@ -54,3 +55,7 @@ func no_enemies_left():
 
 func _on_level_music_finished():
 	level_music.play()
+
+func _on_chat_dialog_finished():
+	ui.wave_button.disabled = false
+	level_music.play_level_music()

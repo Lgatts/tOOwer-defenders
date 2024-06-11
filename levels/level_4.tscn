@@ -57,7 +57,7 @@ _element = 2
 
 [node name="TowerPad10" parent="TowerPads" index="9" instance=ExtResource("3_ylstb")]
 position = Vector2(781, 847)
-_element = 2
+_element = 1
 
 [node name="TowerPad11" parent="TowerPads" index="10" instance=ExtResource("3_ylstb")]
 position = Vector2(95, 1030)
@@ -118,6 +118,9 @@ _element = 1
 [node name="TowerPad25" parent="TowerPads" index="24" instance=ExtResource("3_ylstb")]
 position = Vector2(1649, 440)
 _element = 1
+
+[node name="TowerPad26" parent="TowerPads" index="25" instance=ExtResource("3_ylstb")]
+position = Vector2(676, 845)
 
 [node name="Path2D" type="Path2D" parent="PathPool" index="0"]
 curve = SubResource("Curve2D_x8cnl")

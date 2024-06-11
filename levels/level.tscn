@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://djkojnfohxlnd"]
+[gd_scene load_steps=24 format=3 uid="uid://djkojnfohxlnd"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_7cm5m"]
 [ext_resource type="Texture2D" uid="uid://d1q42a330ia2n" path="res://assets/tiles/Tiles.png" id="1_rtdoe"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://clela50ybqrl0" path="res://assets/tiles/IceSpriteSheet.png" id="8_7tffr"]
 [ext_resource type="Texture2D" uid="uid://cvktmguyvfysf" path="res://assets/tiles/DungeonTileSet.png" id="9_diqxj"]
 [ext_resource type="Texture2D" uid="uid://d1etkax6k1y6x" path="res://assets/tiles/DungeonWater.png" id="10_5kqwn"]
+[ext_resource type="Script" path="res://levels/LevelMusic.gd" id="13_eerf7"]
+[ext_resource type="PackedScene" uid="uid://m0lipdc6sc8o" path="res://screens/Components/chat.tscn" id="13_f6jbv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmgn4"]
 texture = ExtResource("1_rtdoe")
@@ -1974,8 +1976,12 @@ texture = ExtResource("7_0300p")
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
+script = ExtResource("13_eerf7")
+
+[node name="Chat" parent="." instance=ExtResource("13_f6jbv")]
 
 [connection signal="wave_finished" from="." to="UI" method="_on_level_1_wave_finished"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="wave_button_clicked" from="UI" to="." method="_on_ui_wave_button_clicked"]
 [connection signal="finished" from="LevelMusic" to="." method="_on_level_music_finished"]
+[connection signal="dialog_finished" from="Chat" to="." method="_on_chat_dialog_finished"]

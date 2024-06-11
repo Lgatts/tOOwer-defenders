@@ -10,6 +10,7 @@ func _init():
 	}
 	maxHealth = 10
 	speed = 0.6
+	enemy_type = Enums.EnemiesType.SKELETON
 
 func _ready():	
 	if(element == Enums.Elements.FIRE):
