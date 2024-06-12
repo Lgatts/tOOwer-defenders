@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckhwq6t8ybben"]
+[gd_scene load_steps=8 format=3 uid="uid://ckhwq6t8ybben"]
 
 [ext_resource type="Texture2D" uid="uid://d0ksnpb5c0kin" path="res://assets/ui/TitleScreenBackground.png" id="1_jc5l1"]
 [ext_resource type="Script" path="res://game.gd" id="1_o58xa"]
 [ext_resource type="FontFile" uid="uid://c5skvctsq0yh5" path="res://assets/fonts/LondonPresley.ttf" id="3_k08m4"]
+[ext_resource type="FontFile" uid="uid://c2a4jy82svlgh" path="res://assets/fonts/CheerfulMorning.otf" id="4_el1bu"]
 [ext_resource type="AudioStream" uid="uid://c0y81f1sn83q3" path="res://assets/sounds/Title.mp3" id="4_lxntj"]
 
 [sub_resource type="Animation" id="Animation_hj7eu"]
@@ -98,6 +99,19 @@ theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("3_k08m4")
 theme_override_font_sizes/font_size = 59
 text = "Sair"
+
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer"]
+offset_left = 533.0
+offset_top = 727.0
+offset_right = 692.0
+offset_bottom = 787.0
+theme_override_colors/font_color = Color(0, 0.317647, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_el1bu")
+theme_override_font_sizes/font_size = 60
+text = "Pesquisa"
+uri = "https://forms.gle/RkrAAWwRxo51MxgT7"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_lxntj")

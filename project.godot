@@ -14,8 +14,9 @@ config/name="tOOwer Defenders"
 config/description="Tcc"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/show_image=false
 boot_splash/image="res://assets/bg1920.png"
+config/icon="res://assets/towers/TowerWater.png"
+config/windows_native_icon="res://assets/towers/TowerIcon.ico"
 
 [autoload]
 
