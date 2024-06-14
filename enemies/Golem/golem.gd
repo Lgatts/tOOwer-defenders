@@ -13,18 +13,18 @@ func _init():
 
 func _ready():
 	if(element == Enums.Elements.FIRE):
-		maxHealth = 50
-		droped_gold = 50
+		maxHealth = 200
+		droped_gold = 100
 	if(element == Enums.Elements.WATER):
-		maxHealth = 60
-		droped_gold = 70
+		maxHealth = 200
+		droped_gold = 200
 	if(element == Enums.Elements.EARTH):
-		maxHealth = 70
-		droped_gold = 90
+		maxHealth = 400
+		droped_gold = 250
 	if(element == Enums.Elements.WIND):
-		maxHealth = 80
-		droped_gold = 110
+		maxHealth = 500
+		droped_gold = 300
 	if(element == Enums.Elements.NEUTRAL):
-		maxHealth = 100
-		droped_gold = 150
+		maxHealth = 600
+		droped_gold = 400
 	super._ready()
