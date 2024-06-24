@@ -4,4 +4,4 @@ Jogo de Tower Defense desenvolvido para facilitar o aprendizado de Programação
 
 Desenvolvido em Godot 4.2.1
 
-Versão compilada para windows 
+Versão compilada para windows https://github.com/Lgatts/tOOwer-defenders/releases/tag/1.0.1
